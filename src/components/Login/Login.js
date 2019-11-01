@@ -61,6 +61,12 @@ class Login extends Component {
 						let cookies = new Cookies();
 						cookies.set('user', cookieValue, { path: '/', expires: new Date(Date.now() + 86400000) });
 						window.location.reload();
+					} else {
+						document.getElementById('account-input').style.borderColor = 'red';
+						document.getElementById('account-input').style.borderWidth = '1.5px';
+						document.getElementById('false-account-msg').style.color = 'red';
+						document.getElementById('false-account-msg').innerHTML = `Account doesn't exist`;
+						console.log("Fail");
 					}
 				});
 			};
