@@ -2,8 +2,14 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
+.App-logo-flip {
+  animation: App-logo-flip infinite 10s linear;
+  pointer-events: none;
+}
+
+.App-logo-spin {
+  animation: App-logo-spin infinite 20s linear;
+  pointer-events: none;
 }
 
 .App-header {
@@ -18,5 +24,23 @@
 }
 
 .App-link {
-  color: #09d3ac;
+  color: #61dafb;
+}
+
+@keyframes App-logo-flip {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
