@@ -1,0 +1,53 @@
+.navbar {
+    background-color: rgb(78, 78, 78);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: fixed;
+    top: 0vh;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    min-height: 50px;
+    z-index: 2;
+    overflow: visible;
+}
+
+.navbar-wrapper{
+    display: inline-flex;
+    direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-grow: 1;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+    height: 100%;
+}
+
+.navbar-button {
+    -webkit-appearance: none;
+	background-color: inherit;
+    padding-top: 4%;
+	font-size: 110%;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.navbar-button-disabled {
+	-webkit-appearance: none;
+    background-color: inherit;
+    display: none;
+    cursor: pointer;
+}
+
+.navbar-button:focus {
+    outline: 0;
+}
+
+a {
+    margin-top: 1%;
+    width: 15%;
+    height: 80%;
+    text-decoration-line: none;
+    display: inline-block;
+    justify-content: center;
+}
