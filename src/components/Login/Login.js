@@ -8,7 +8,7 @@ import './Login.css';
 class Login extends Component {
 	state = {
 		cookie: undefined
-	};
+	}
 
 	constructor() {
 		super();
@@ -66,14 +66,13 @@ class Login extends Component {
 						document.getElementById('account-input').style.borderWidth = '1.5px';
 						document.getElementById('false-account-msg').style.color = 'red';
 						document.getElementById('false-account-msg').innerHTML = `Account doesn't exist`;
-						console.log("Fail");
 					}
 				});
 			};
 		};
 
 		request(options, callback);
-	};
+	}
 
 	clearSpan = async e => {
 		document.getElementById('account-input').style.borderColor = '#ccc';
