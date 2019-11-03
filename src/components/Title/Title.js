@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Cookies from 'universal-cookie';
+import Info from '../Info/Info';
 import NavigationBar from '../NavigationBar/NavigationBar';
 import logo from '../../assets/logo.svg';
 import './Title.css';
@@ -26,11 +27,18 @@ class Title extends Component {
 		return (
 			<React.Fragment>
 				<NavigationBar></NavigationBar>
-				<div className="wrapper-title">
+
+				{
+					this.state.cookie ? <Info></Info> : ""
+				}
+
+				<div className={
+					this.state.cookie ? "wrapper-title1" : "wrapper-title2"
+				}>
 					<div>
 						<img src={logo} className={
 							this.state.cookie ? "App-logo-flip" : "App-logo-spin"
-						} alt="logo" width="25%"/>
+						} alt="logo" width={ this.state.cookie ? "20%" : "25%" }/>
 					</div>
 
 					<div className={
@@ -53,7 +61,7 @@ class Title extends Component {
 				</div>
 			</React.Fragment>
 		);
-	};
+	}
 };
 
 export default Title;
