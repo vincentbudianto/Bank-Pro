@@ -73,6 +73,15 @@ class Transfer extends Component {
 		request(options, callback);
 	}
 
+	goToTransactionsHistory() {
+		document.getElementById('modal-success').style.display = 'none';
+		window.location.href = '/TransactionsHistory';
+	}
+
+	closeModal() {
+		document.getElementById('modal-failed').style.display = 'none';
+	}
+
 	render() {
 		return (
 			<React.Fragment>
@@ -82,7 +91,23 @@ class Transfer extends Component {
 					<img src={name} className="App-logo" alt="name" width="50%" />
 
 					<div className="container-transfer">
-						<TransferForm/>
+						<TransferForm onTransfer={ this.handleTransfer }/>
+					</div>
+				</div>
+
+				<div id="modal-success" className="modal" onClick={ this.goToTransactionsHistory }>
+					<div className="modal-content-container">
+						<div className="modal-content">
+							<p id="message1-1">Transfer Success</p>
+						</div>
+					</div>
+				</div>
+
+				<div id="modal-failed" className="modal" onClick={ this.closeModal }>
+					<div className="modal-content-container">
+						<div className="modal-content">
+							<p id="message1-2">Transfer Failed</p>
+						</div>
 					</div>
 				</div>
 
