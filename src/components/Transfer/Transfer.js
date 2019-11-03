@@ -73,6 +73,63 @@ class Transfer extends Component {
 		request(options, callback);
 	}
 
+	handleTransfer = async e => {
+		e.preventDefault();
+		let request = require('request');
+		let xml2js = require('xml2js');
+
+		let receiverAccount = e.target.elements.receiver.value;
+		let transferAmount = e.target.elements.amount.value;
+
+		let xml =
+			`<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services/">
+				<soapenv:Header/>
+				<soapenv:Body>
+					<ser:Transfer>
+						<account>` + this.state.accountNumber + `</account>
+						<amount>` + transferAmount + `</amount>
+						<targetAccount>` + receiverAccount + `</targetAccount>
+					</ser:Transfer>
+				</soapenv:Body>
+			</soapenv:Envelope>`;
+
+		let options = {
+			url: 'http://localhost:8085/web_service_bank_pro/services/Transfer?wsdl',
+			method: 'POST',
+			body: xml,
+			headers: {
+				'Content-Type': 'text/xml;charset=utf-8',
+			}
+		};
+
+		let callback = (error, response, body) => {
+			if (!error && response.statusCode === 200) {
+				let parser = new DOMParser();
+				let xmlResponse = parser.parseFromString(body, "text/xml");
+				let resultResponse = xmlResponse.getElementsByTagName("return")[0].outerHTML;
+
+				let xmlOptions = {
+					explicitArray: false
+				};
+
+				xml2js.parseString(resultResponse, xmlOptions, (err, res) => {
+					let json = JSON.stringify(res);
+					let result = JSON.parse(json)["return"];
+
+					if (result === "200") {
+						document.getElementById('message2-1').innerHTML = `Thank you for transfering using Bank Pro`;
+						document.getElementById('modal-success').style.display = 'block';
+					} else {
+						document.getElementById('message2-2').innerHTML = `Unknows error | Please try again`;
+						document.getElementById('modal-failed').style.display = 'block';
+					}
+				});
+			};
+		};
+
+		request(options, callback);
+	}
+
 	goToTransactionsHistory() {
 		document.getElementById('modal-success').style.display = 'none';
 		window.location.href = '/TransactionsHistory';
@@ -99,6 +156,7 @@ class Transfer extends Component {
 					<div className="modal-content-container">
 						<div className="modal-content">
 							<p id="message1-1">Transfer Success</p>
+							<p id="message2-1" className="message2"></p>
 						</div>
 					</div>
 				</div>
@@ -107,6 +165,7 @@ class Transfer extends Component {
 					<div className="modal-content-container">
 						<div className="modal-content">
 							<p id="message1-2">Transfer Failed</p>
+							<p id="message2-2" className="message2"></p>
 						</div>
 					</div>
 				</div>
