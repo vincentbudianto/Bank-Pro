@@ -1,8 +1,10 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import Cookies from 'universal-cookie';
+import TransactionsHistory from '../TransactionsHistory/TransactionsHistory'
 import Login from '../Login/Login'
 import Title from '../Title/Title'
+import Transfer from '../Transfer/Transfer'
 
 function Router() {
 	const cookie = new Cookies();
@@ -19,7 +21,9 @@ function Router() {
 			<main>
 				<Switch>
 					<Route exact path='/' render={() => (<Redirect to="/Title"/>)} />
+					<Route exact path='/TransactionsHistory' component={TransactionsHistory} />
 					<Route exact path='/Title' component={Title} />
+					<Route exact path='/Transfer' component={Transfer} />
 					<Route exact path='/*' component={Title} />
 				</Switch>
 			</main>
