@@ -21,7 +21,7 @@ class NavigationBar extends Component {
 		const cookies = new Cookies();
 		cookies.remove('user', { path: '/' });
 		window.location.reload();
-	};
+	}
 
 	render() {
 		return (
@@ -31,19 +31,19 @@ class NavigationBar extends Component {
 						<img src={name} className="App-logo" alt="name" width="150" height="50" />
 					</Link>
 
-					<Link to='/Transactions'>
+					<Link to='/Transfer'>
 						<div className={
 							this.state.cookie ? "navbar-button" : "navbar-button-disabled"
 						}>
-							<font color="white">Transactions</font>
+							<font color="white">Transfer</font>
 						</div>
 					</Link>
 
-					<Link to='/History'>
+					<Link to='/TransactionsHistory'>
 						<div className={
 							this.state.cookie ? "navbar-button" : "navbar-button-disabled"
 						}>
-							<font color="white">History</font>
+							<font color="white">Transactions History</font>
 						</div>
 					</Link>
 
