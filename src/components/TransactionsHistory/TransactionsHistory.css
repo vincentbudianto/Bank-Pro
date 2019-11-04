@@ -48,3 +48,11 @@
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
+.text-content-debit {
+	color: lightcoral;
+}
+
+.text-content-kredit {
+	color: limegreen;
+}
