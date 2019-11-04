@@ -18,11 +18,9 @@
 Bank Pro dibuat dengan menggunakan create-react-app
 
 Beberapa dependencies tambahan yang dibutuhkan oleh aplikasi Bank Pro:
-1. xml2js
-<br>
+1. xml2js <br>
 ```npm install --save xml2js```
-2. universal cookie
-<br>
+2. universal cookie <br>
 ```npm install --save universal-cookie```
 
 <br>
