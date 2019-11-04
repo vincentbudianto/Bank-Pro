@@ -79,8 +79,17 @@ class Transfer extends Component {
 		let receiverAccount = e.target.elements.receiver.value;
 		let transferAmount = e.target.elements.amount.value;
 
-		if (Number(this.state.balance) < Number(transferAmount)) {
-			document.getElementById('message2-2').innerHTML = `Insufficient balance | Please try again`;
+		if (receiverAccount == "") {
+			document.getElementById('message2-2').innerHTML = `Receiver account can't be empty`;
+			document.getElementById('modal-failed').style.display = 'block';
+		} else if (transferAmount == "") {
+			document.getElementById('message2-2').innerHTML = `Amount can't be empty`;
+			document.getElementById('modal-failed').style.display = 'block';
+		} else if ((receiverAccount == this.state.accountNumber) || (receiverAccount == "%")) {
+			document.getElementById('message2-2').innerHTML = `Invalid account`;
+			document.getElementById('modal-failed').style.display = 'block';
+		} else if (Number(this.state.balance) < Number(transferAmount)) {
+			document.getElementById('message2-2').innerHTML = `Insufficient balance`;
 			document.getElementById('modal-failed').style.display = 'block';
 		} else {
 			let validationRequest = require('request');
@@ -169,7 +178,7 @@ class Transfer extends Component {
 											document.getElementById('message2-1').innerHTML = `Thank you for transfering using Bank Pro`;
 											document.getElementById('modal-success').style.display = 'block';
 										} else {
-											document.getElementById('message2-2').innerHTML = `Unknows error | Please try again`;
+											document.getElementById('message2-2').innerHTML = `Unknows error`;
 											document.getElementById('modal-failed').style.display = 'block';
 										}
 									});
@@ -178,7 +187,7 @@ class Transfer extends Component {
 
 							request(options, callback);
 						} else {
-							document.getElementById('message2-2').innerHTML = `Account doesn't exist | Please try again`;
+							document.getElementById('message2-2').innerHTML = `Account doesn't exist`;
 							document.getElementById('modal-failed').style.display = 'block';
 						}
 					});
