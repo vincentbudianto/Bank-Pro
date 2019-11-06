@@ -39,7 +39,7 @@ class Transfer extends Component {
 			</soapenv:Envelope>`;
 
 		let options = {
-			url: 'http://localhost:8085/web_service_bank_pro/services/GetCustomerBalance?wsdl',
+			url: 'http://localhost:8080/web_service_bank_pro/services/GetCustomerBalance?wsdl',
 			method: 'POST',
 			body: xml,
 			headers: {
@@ -79,13 +79,13 @@ class Transfer extends Component {
 		let receiverAccount = e.target.elements.receiver.value;
 		let transferAmount = e.target.elements.amount.value;
 
-		if (receiverAccount == "") {
+		if (receiverAccount === "") {
 			document.getElementById('message2-2').innerHTML = `Receiver account can't be empty`;
 			document.getElementById('modal-failed').style.display = 'block';
-		} else if (transferAmount == "") {
+		} else if (transferAmount === "") {
 			document.getElementById('message2-2').innerHTML = `Amount can't be empty`;
 			document.getElementById('modal-failed').style.display = 'block';
-		} else if ((receiverAccount == this.state.accountNumber) || (receiverAccount == "%")) {
+		} else if ((receiverAccount === this.state.accountNumber) || (receiverAccount === "%")) {
 			document.getElementById('message2-2').innerHTML = `Invalid account`;
 			document.getElementById('modal-failed').style.display = 'block';
 		} else if (Number(this.state.balance) < Number(transferAmount)) {
@@ -106,7 +106,7 @@ class Transfer extends Component {
 					</soapenv:Envelope>`;
 
 			let validationOptions = {
-				url: 'http://localhost:8085/web_service_bank_pro/services/GetAccountNumber?wsdl',
+				url: 'http://localhost:8080/web_service_bank_pro/services/GetAccountNumber?wsdl',
 				method: 'POST',
 				body: validationXML,
 				headers: {
@@ -152,7 +152,7 @@ class Transfer extends Component {
 								</soapenv:Envelope>`;
 
 							let options = {
-								url: 'http://localhost:8085/web_service_bank_pro/services/Transfer?wsdl',
+								url: 'http://localhost:8080/web_service_bank_pro/services/Transfer?wsdl',
 								method: 'POST',
 								body: xml,
 								headers: {
