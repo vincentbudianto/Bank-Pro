@@ -1,9 +1,12 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Cookies from 'universal-cookie';
-import TransactionsHistory from '../TransactionsHistory/TransactionsHistory';
+import BottomBar from '../BottomBar/BottomBar';
+import Info from '../Info/Info';
 import Login from '../Login/Login';
+import NavigationBar from '../NavigationBar/NavigationBar';
 import Title from '../Title/Title';
+import TransactionsHistory from '../TransactionsHistory/TransactionsHistory';
 import Transfer from '../Transfer/Transfer';
 
 function Router() {
@@ -11,14 +14,20 @@ function Router() {
 
 	if (!cookie.get("user")) {
 		return (
-			<Switch>
-				<Route exact path='/Login' component={Login} />
-				<Route exact path='/*' component={Title} />
-			</Switch>
+			<main>
+				<NavigationBar></NavigationBar>
+				<Switch>
+					<Route exact path='/Login' component={Login} />
+					<Route exact path='/*' component={Title} />
+				</Switch>
+				<BottomBar></BottomBar>
+			</main>
 		);
 	} else {
 		return (
 			<main>
+				<NavigationBar></NavigationBar>
+				<Info></Info>
 				<Switch>
 					<Route exact path='/' render={() => (<Redirect to="/Title"/>)} />
 					<Route exact path='/TransactionsHistory' component={TransactionsHistory} />
@@ -26,6 +35,7 @@ function Router() {
 					<Route exact path='/Transfer' component={Transfer} />
 					<Route exact path='/*' component={Title} />
 				</Switch>
+				<BottomBar></BottomBar>
 			</main>
 		);
 	}
