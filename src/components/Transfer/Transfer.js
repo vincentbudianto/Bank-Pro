@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Cookies from 'universal-cookie';
 import TransferForm from './TransferForm';
+import AddBalanceForm from './AddBalanceForm';
 import NavigationBar from '../NavigationBar/NavigationBar';
 import Info from '../Info/Info';
 import name from '../../assets/bank_pro_logo.svg';
@@ -11,7 +12,8 @@ class Transfer extends Component {
 		cookie: undefined,
 		accountNumber: undefined,
 		balance: undefined,
-		targetAccount: undefined
+		targetAccount: undefined,
+		check: false
 	}
 
 	constructor() {
@@ -73,6 +75,78 @@ class Transfer extends Component {
 		request(options, callback);
 	}
 
+	handleCheck = async e => {
+		if (this.state.check) {
+			this.setState({ check: false })
+		} else {
+			this.setState({ check: true })
+		}
+	}
+
+	handleAddBalance = async e => {
+		e.preventDefault();
+
+		let addAmount = e.target.elements.amount.value;
+
+		if (addAmount === "") {
+			document.getElementById('message2-2').innerHTML = `Amount can't be empty`;
+			document.getElementById('modal-failed').style.display = 'block';
+		} else if (isNaN(addAmount)) {
+			document.getElementById('message2-2').innerHTML = `Amount must be numbers`;
+			document.getElementById('modal-failed').style.display = 'block';
+		} else {
+			let request = require('request');
+			let xml2js = require('xml2js');
+
+			let xml =
+				`<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services/">
+					<soapenv:Header/>
+					<soapenv:Body>
+						<ser:AddBalance>
+							<account>` + this.state.accountNumber + `</account>
+							<amount>` + addAmount + `</amount>
+						</ser:AddBalance>
+					</soapenv:Body>
+				</soapenv:Envelope>`;
+
+			let options = {
+				url: 'http://localhost:8080/web_service_bank_pro/services/AddBalance?wsdl',
+				method: 'POST',
+				body: xml,
+				headers: {
+					'Content-Type': 'text/xml;charset=utf-8',
+				}
+			};
+
+			let callback = (error, response, body) => {
+				if (!error && response.statusCode === 200) {
+					let parser = new DOMParser();
+					let xmlResponse = parser.parseFromString(body, "text/xml");
+					let resultResponse = xmlResponse.getElementsByTagName("return")[0].outerHTML;
+
+					let xmlOptions = {
+						explicitArray: false
+					};
+
+					xml2js.parseString(resultResponse, xmlOptions, (err, res) => {
+						let json = JSON.stringify(res);
+						let result = JSON.parse(json)["return"];
+
+						if (result === "200") {
+							document.getElementById('message2-1').innerHTML = `Your balance has been added`;
+							document.getElementById('modal-success').style.display = 'block';
+						} else {
+							document.getElementById('message2-2').innerHTML = `Unknows error`;
+							document.getElementById('modal-failed').style.display = 'block';
+						}
+					});
+				};
+			};
+
+			request(options, callback);
+		}
+	}
+
 	handleTransfer = async e => {
 		e.preventDefault();
 
@@ -88,6 +162,9 @@ class Transfer extends Component {
 		} else if ((receiverAccount === this.state.accountNumber) || (receiverAccount === "%")) {
 			document.getElementById('message2-2').innerHTML = `Invalid account`;
 			document.getElementById('modal-failed').style.display = 'block';
+		} else if (isNaN(transferAmount)) {
+			document.getElementById('message2-2').innerHTML = `Amount must be numbers`;
+			document.getElementById('modal-failed').style.display = 'block';
 		} else if (Number(this.state.balance) < Number(transferAmount)) {
 			document.getElementById('message2-2').innerHTML = `Insufficient balance`;
 			document.getElementById('modal-failed').style.display = 'block';
@@ -97,13 +174,13 @@ class Transfer extends Component {
 
 			let validationXML =
 				`<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services/">
-						<soapenv:Header/>
-						<soapenv:Body>
-							<ser:GetAccountNumber>
-								<account>` + receiverAccount + `</account>
-							</ser:GetAccountNumber>
-						</soapenv:Body>
-					</soapenv:Envelope>`;
+					<soapenv:Header/>
+					<soapenv:Body>
+						<ser:GetAccountNumber>
+							<account>` + receiverAccount + `</account>
+						</ser:GetAccountNumber>
+					</soapenv:Body>
+				</soapenv:Envelope>`;
 
 			let validationOptions = {
 				url: 'http://localhost:8080/web_service_bank_pro/services/GetAccountNumber?wsdl',
@@ -127,16 +204,9 @@ class Transfer extends Component {
 					xml2js.parseString(resultResponse, xmlOptions, (err, res) => {
 						let json = JSON.stringify(res);
 						let validationResult = JSON.parse(json)["return"];
-						console.log("validation result : ", validationResult);
 
 						if (validationResult["status"] === "200") {
 							let request = require('request');
-
-							console.log("account : ", this.state.accountNumber);
-							console.log("balance : ", this.state.balance);
-							console.log("amount : ", transferAmount);
-							console.log("targetAccount : ", receiverAccount);
-							console.log("realAccount : ", validationResult["accountNumber"]);
 
 							let xml =
 								`<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services/">
@@ -215,8 +285,19 @@ class Transfer extends Component {
 				<div className="wrapper-transfer">
 					<img src={name} className="App-logo" alt="name" width="50%" />
 
+					<label className="switch">
+						<input type="checkbox" onChange={ this.handleCheck }></input>
+							<span className="switch-text">
+								{
+									this.state.check ? "Add Balance" : "Transfer"
+								}
+							</span>
+					</label>
+
 					<div className="container-transfer">
-						<TransferForm onTransfer={ this.handleTransfer }/>
+						{
+							this.state.check ? <AddBalanceForm onAddBalance={this.handleAddBalance} /> : <TransferForm onTransfer={this.handleTransfer} />
+					}
 					</div>
 				</div>
 
