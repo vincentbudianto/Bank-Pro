@@ -7,12 +7,64 @@
 	z-index: 0;
 }
 
+.switch {
+    position: absolute;
+    width: 25vw;
+    height: 2vw;
+    margin-top: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.switch-text {
+    cursor: pointer;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #ccc;
+}
+
+.switch-text:before {
+    position: absolute;
+    height: 26px;
+    width: 26px;
+    left: 0.5vw;
+    bottom: 7px;
+    background-color: white;
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+
+input:checked + .switch-text {
+    background-color: rgb(0,193,236);
+    color: white;
+}
+
+input:focus + .switch-text {
+    box-shadow: 0 0 1px rgb(0,193,236);
+}
+
+.switch-text {
+    border-radius: 34px;
+    white-space: nowrap;
+    font-size: 1.1rem;
+}
+
 .container-transfer {
     display: flex;
     justify-content: center;
 }
 
 .transfer-form {
+    width: 30%;
+    min-width: 300px;
+}
+
+.add-balance-form {
     width: 30%;
     min-width: 300px;
 }
@@ -37,6 +89,16 @@ input[type=text] {
 }
 
 .transfer-button {
+    background-color: rgb(0,193,236);
+    color: white;
+    padding: 14px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 14px;
+}
+
+.add-balance-button {
     background-color: rgb(0,193,236);
     color: white;
     padding: 14px 20px;
