@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import Cookies from 'universal-cookie';
 import TransferForm from './TransferForm';
 import AddBalanceForm from './AddBalanceForm';
-import NavigationBar from '../NavigationBar/NavigationBar';
-import Info from '../Info/Info';
-import name from '../../assets/bank_pro_logo.svg';
+import logo from '../../assets/bank_pro_logo.svg';
 import './Transfer.css';
 
 class Transfer extends Component {
@@ -280,10 +278,8 @@ class Transfer extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<NavigationBar></NavigationBar>
-				<Info></Info>
 				<div className="wrapper-transfer">
-					<img src={name} className="App-logo" alt="name" width="50%" />
+					<img src={logo} className="App-logo" alt="logo" width="50%" />
 
 					<label className="switch">
 						<input type="checkbox" onChange={ this.handleCheck }></input>
