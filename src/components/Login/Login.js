@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Cookies from 'universal-cookie';
 import LoginForm from './LoginForm';
-import NavigationBar from '../NavigationBar/NavigationBar';
 import logo from '../../assets/bank_pro_logo.svg';
 import './Login.css';
 
@@ -83,7 +82,6 @@ class Login extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<NavigationBar></NavigationBar>
 				<div className="wrapper-login">
 					<div>
 						<img src={logo} className="App-name" alt="logo" width="75%"/>
