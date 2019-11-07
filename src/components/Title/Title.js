@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Cookies from 'universal-cookie';
-import Info from '../Info/Info';
-import NavigationBar from '../NavigationBar/NavigationBar';
 import logo from '../../assets/logo.svg';
 import './Title.css';
 
@@ -26,12 +24,6 @@ class Title extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<NavigationBar></NavigationBar>
-
-				{
-					this.state.cookie ? <Info></Info> : ""
-				}
-
 				<div className={
 					this.state.cookie ? "wrapper-title1" : "wrapper-title2"
 				}>
