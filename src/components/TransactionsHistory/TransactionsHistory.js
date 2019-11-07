@@ -45,7 +45,7 @@ class TransactionsHistory extends Component {
 				let resultResponse = xmlResponse.getElementsByTagName("return")[0].outerHTML;
 
 				let xmlOptions = {
-					explicitArray: false
+					explicitArray: true
 				};
 
 				xml2js.parseString(resultResponse, xmlOptions, (err, res) => {
@@ -53,7 +53,7 @@ class TransactionsHistory extends Component {
 					let result = JSON.parse(json)["return"];
 					console.log("result : ", result);
 
-					if (result["status"] === "200") {
+					if (result["status"][0] === "200") {
 						let historyContent = document.getElementsByClassName('history-content')[0];
 
 						for (let i = 0; i < result["transactionTime"].length; i++) {
