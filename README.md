@@ -42,7 +42,10 @@ ketikan ```npm start``` pada direktori aplikasi Bank Pro
 
 ### Login
 
-![](screenshots/login.png)
+![](screenshots/login1.png)
+<br>
+<br>
+![](screenshots/login2.png)
 <br>
 <br>
 
@@ -69,10 +72,31 @@ ketikan ```npm start``` pada direktori aplikasi Bank Pro
 ![](screenshots/transfer7.png)
 <br>
 <br>
+![](screenshots/transfer8.png)
+<br>
+<br>
+
+### Add Balance
+
+![](screenshots/addBalance1.png)
+<br>
+<br>
+![](screenshots/addBalance2.png)
+<br>
+<br>
+![](screenshots/addBalance3.png)
+<br>
+<br>
+![](screenshots/addBalance4.png)
+<br>
+<br>
 
 ### Transactions History
 
-![](screenshots/transactionsHistory.png)
+![](screenshots/transactionsHistory1.png)
+<br>
+<br>
+![](screenshots/transactionsHistory2.png)
 <br>
 <br>
 
