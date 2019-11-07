@@ -15,7 +15,10 @@
 </h2>
 
 ## Deskripsi Singkat
-Bank Pro dibuat dengan menggunakan create-react-app
+Aplikasi Bank Pro merupakan aplikasi simulasi perbankan berbasis web yang dibuat dengan menggunakan kakas ReactJs.
+
+Inisialisasi React :<br>
+ketikan ```create-react-app [Nama_Folder]``` untuk menginisiasi pembuatan aplikasi ReactJs pada folder [Nama_Folder]
 
 Beberapa dependencies tambahan yang dibutuhkan oleh aplikasi Bank Pro:
 1. xml2js <br>
@@ -23,9 +26,7 @@ Beberapa dependencies tambahan yang dibutuhkan oleh aplikasi Bank Pro:
 2. universal cookie <br>
 ```npm install --save universal-cookie```
 
-<br>
-Cara menjalankan:
-
+Cara menjalankan:<br>
 ketikan ```npm start``` pada direktori aplikasi Bank Pro
 
 ## Screenshots
