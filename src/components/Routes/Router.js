@@ -12,7 +12,7 @@ import Transfer from '../Transfer/Transfer';
 function Router() {
 	const cookie = new Cookies();
 
-	if (!cookie.get("user")) {
+	if (!cookie.get("userBankPro")) {
 		return (
 			<main>
 				<NavigationBar></NavigationBar>

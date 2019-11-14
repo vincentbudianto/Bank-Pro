@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Cookies from 'universal-cookie';
-import NavigationBar from '../NavigationBar/NavigationBar';
-import Info from '../Info/Info';
 import './TransactionsHistory.css';
 
 class TransactionsHistory extends Component {
@@ -12,7 +10,7 @@ class TransactionsHistory extends Component {
 	constructor() {
 		super();
 		const cookie = new Cookies();
-		this.state.cookie = cookie.get("user");
+		this.state.cookie = cookie.get("userBankPro");
 	}
 
 	componentDidMount() {
@@ -98,8 +96,6 @@ class TransactionsHistory extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<NavigationBar></NavigationBar>
-				<Info></Info>
 				<div className="wrapper-history">
 					<div className="history">
 						<div className="history-header">

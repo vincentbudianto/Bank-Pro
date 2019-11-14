@@ -12,7 +12,7 @@ class Title extends Component {
 	constructor() {
 		super();
 		const cookie = new Cookies();
-		this.state.cookie = cookie.get("user");
+		this.state.cookie = cookie.get("userBankPro");
 	}
 
 	componentDidMount() {

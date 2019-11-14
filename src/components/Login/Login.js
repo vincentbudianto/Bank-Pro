@@ -12,7 +12,7 @@ class Login extends Component {
 	constructor() {
 		super();
 		let cookie = new Cookies();
-		this.state.cookie = cookie.get("user");
+		this.state.cookie = cookie.get("userBankPro");
 	}
 
 	handleLogin = async e => {
@@ -58,7 +58,7 @@ class Login extends Component {
 					if (result["status"] === "200") {
 						let cookieValue = btoa(JSON.stringify(result));
 						let cookies = new Cookies();
-						cookies.set('user', cookieValue, { path: '/', expires: new Date(Date.now() + 86400000) });
+						cookies.set('userBankPro', cookieValue, { path: '/', expires: new Date(Date.now() + 86400000) });
 						window.location.reload();
 					} else {
 						document.getElementById('account-input').style.borderColor = 'red';
