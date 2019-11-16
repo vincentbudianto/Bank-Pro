@@ -6,19 +6,76 @@ import './Title.css';
 class Title extends Component {
 	state = {
 		cookie: undefined,
+		accountNumber: undefined,
 		customerName: undefined
 	}
 
 	constructor() {
 		super();
 		const cookie = new Cookies();
-		this.state.cookie = cookie.get("user");
+		this.state.cookie = cookie.get("userBankPro");
 	}
 
 	componentDidMount() {
 		if (this.state.cookie && !this.state.customerName) {
 			this.setState({ customerName: JSON.parse(atob(this.state.cookie))["customerName"] });
 		}
+
+		if (this.state.cookie && !this.state.accountNumber) {
+			this.setState({ accountNumber: JSON.parse(atob(this.state.cookie))["accountNumber"] });
+		}
+	}
+
+	getVirtualAccount = async e => {
+		let request = require('request');
+		let xml2js = require('xml2js');
+
+		let random = Math.floor(Math.random() * (9999999999 - 1000000000) + 1000000000);
+
+		let xml =
+			`<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services/">
+				<soapenv:Header/>
+				<soapenv:Body>
+					<ser:GetVirtualNumber>
+						<senderAccount>` + random + `</senderAccount>
+						<receiverAccount>` + this.state.accountNumber + `</receiverAccount>
+					</ser:GetVirtualNumber>
+				</soapenv:Body>
+			</soapenv:Envelope>`;
+
+		let options = {
+			url: 'http://localhost:8080/web_service_bank_pro/services/GetVirtualNumber?wsdl',
+			method: 'POST',
+			body: xml,
+			headers: {
+				'Content-Type': 'text/xml;charset=utf-8',
+			}
+		};
+
+		let callback = (error, response, body) => {
+			if (!error && response.statusCode === 200) {
+				let parser = new DOMParser();
+				let xmlResponse = parser.parseFromString(body, "text/xml");
+				let resultResponse = xmlResponse.getElementsByTagName("return")[0].outerHTML;
+
+				let xmlOptions = {
+					explicitArray: false
+				};
+
+				xml2js.parseString(resultResponse, xmlOptions, (err, res) => {
+					let json = JSON.stringify(res);
+					let result = JSON.parse(json)["return"];
+
+					if (result["status"] === "200") {
+						console.log("virtual number :", result["virtualNumber"]);
+					} else {
+						console.log("Failed generate virtual number");
+					}
+				});
+			};
+		};
+
+		request(options, callback);
 	}
 
 	render() {
@@ -32,6 +89,10 @@ class Title extends Component {
 							this.state.cookie ? "App-logo-flip" : "App-logo-spin"
 						} alt="logo" width={ this.state.cookie ? "20%" : "25%" }/>
 					</div>
+
+					<button className={
+						this.state.cookie ? "virtual-button" : "virtual-button-hidden"
+					} onClick={ this.getVirtualAccount }>Virtual Account</button>
 
 					<div className={
 						this.state.cookie ? "text-hidden" : "text-title1"
