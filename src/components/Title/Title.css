@@ -18,7 +18,7 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: 50px;
   font-weight: bold;
-  margin-top: 70px;
+  margin-top: 40px;
 }
 
 .text-title2 {
@@ -36,6 +36,24 @@
   display: none;
 }
 
+.virtual-button {
+  position: absolute;
+  top: 200px;
+  right: 15vw;
+  background-color: #cccccc;
+  color: #878787;
+  border-radius: 20px;
+  padding: 5px 15px;
+  cursor: pointer;
+  width: 10%;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.virtual-button-hidden {
+  display: none;
+}
+
 #customer-name {
-    color: rgb(0,193,236);
+  color: rgb(0,193,236);
 }
