@@ -67,15 +67,23 @@ class Title extends Component {
 					let result = JSON.parse(json)["return"];
 
 					if (result["status"] === "200") {
-						console.log("virtual number :", result["virtualNumber"]);
+							document.getElementById('message1').innerHTML = `Virtual Account`;
+							document.getElementById('message2').innerHTML = result["virtualNumber"];
 					} else {
-						console.log("Failed generate virtual number");
+						document.getElementById('message1').innerHTML = `Failed to generate virtual account`;
+						document.getElementById('message1').style.color = `red`;
 					}
+
+					document.getElementById('modal-virtual').style.display = 'block';
 				});
 			};
 		};
 
 		request(options, callback);
+	}
+
+	closeModal() {
+		document.getElementById('modal-virtual').style.display = 'none';
 	}
 
 	render() {
@@ -110,6 +118,16 @@ class Title extends Component {
 						this.state.cookie ? "text-title1" : "text-hidden"
 					}>
 						Hello, <span id="customer-name">{ this.state.customerName }</span>!
+					</div>
+				</div>
+
+				<div id="modal-virtual" className="modal" onClick={this.closeModal}>
+					<div className="modal-content-container">
+						<div className="modal-content">
+							<p id="message1"></p>
+							<span id="message2"></span>
+							<p id="message3">(click anywhere to close this popup)</p>
+						</div>
 					</div>
 				</div>
 			</React.Fragment>
