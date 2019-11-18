@@ -2,20 +2,20 @@ import React from "react";
 import { mount } from "enzyme";
 
 // Disarankan file yang akan ditest diletakkan didalam direktori yang sama seperti ini
-import BottomBar from "./BottomBar";
+import Transfer from "./Transfer";
 
-let bottomBar;
+let transfer;
 
 // setiap sebelum melakukan test, komponen ini kita 'pasang' terlebih dahulu
 beforeEach(() => {
-  bottomBar = mount(<BottomBar />);
+  transfer = mount(<Transfer />);
 });
 
 // setiap setelah melakukan test, komponen ini kita 'lepas'
 afterEach(() => {
-  bottomBar.unmount();
+  transfer.unmount();
 });
 
-it("punya footer", () => {
-	expect(bottomBar.find("footer").length).toEqual(1);
+it("#", () => {
+	expect(transfer.find("p").length).toEqual(4);
 });
