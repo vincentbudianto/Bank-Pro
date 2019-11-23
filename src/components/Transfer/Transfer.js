@@ -62,9 +62,9 @@ class Transfer extends Component {
 					let result = JSON.parse(json)["return"];
 
 					if (result["status"] === "200") {
-						this.setState({ balance: result["balance"] })
+						this.setState({ balance: result["balance"] });
 					} else {
-						this.setState({ balance: -1 })
+						this.setState({ balance: -1 });
 					}
 				});
 			};
@@ -75,9 +75,9 @@ class Transfer extends Component {
 
 	handleCheck = async e => {
 		if (this.state.check) {
-			this.setState({ check: false })
+			this.setState({ check: false });
 		} else {
-			this.setState({ check: true })
+			this.setState({ check: true });
 		}
 	}
 

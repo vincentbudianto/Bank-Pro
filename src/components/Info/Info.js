@@ -60,9 +60,9 @@ class Info extends Component {
 					let result = JSON.parse(json)["return"];
 
 					if (result["status"] === "200") {
-						this.setState({ balance: result["balance"] })
+						this.setState({ balance: result["balance"] });
 					} else {
-						this.setState({ balance: -1 })
+						this.setState({ balance: -1 });
 					}
 				});
 			};
