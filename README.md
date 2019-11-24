@@ -32,7 +32,8 @@ Dependency yang digunakan untuk linting:
 1. babel-eslint parser<br>
 ```npm install babel-eslint --save-dev```
 
-Cara menjalankan:<br>
+Cara menjalankan:
+
 | local                                                    |
 |:--------------------------------------------------------:|
 | ketikan ```npm start``` pada direktori aplikasi Bank Pro |
