@@ -1,0 +1,68 @@
+.wrapper-info {
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	position: fixed;
+    top: 0;
+    left: 0;
+	z-index: 1;
+    overflow: visible;
+}
+
+.wrapper-info-customer-info {
+	height: auto;
+	display: flex;
+	justify-content: center;
+	align-items: left;
+	background-color: white;
+	border-bottom: 2px inset lightgray;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	padding-top: 5.5%;
+	padding-left: 7.5%;
+	padding-right: 7.5%;
+	padding-bottom: 0.5%;
+	min-height: 70px;
+    white-space: nowrap;
+}
+
+.wrapper-main-info1 {
+	width: 100%;
+	display: grid;
+	justify-content: left;
+	align-items: left;
+	text-align: left;
+	margin-top: 5px;
+	margin-left: 5%;
+}
+
+.wrapper-main-info2 {
+	width: 100%;
+	display: inline-flex;
+	margin-top: 20px;
+}
+
+.text-name {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 175%;
+	font-weight: bold;
+	text-align: left;
+}
+
+.text-number {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 125%;
+	font-weight: bold;
+	text-align: left;
+}
+
+.text-balance {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 150%;
+	font-weight: bold;
+	margin-left: 140px;
+}
+
+#customer-info {
+	color: rgb(0,193,236);
+}
