@@ -44,7 +44,7 @@ class Title extends Component {
 			</soapenv:Envelope>`;
 
 		let options = {
-			url: 'http://18.215.174.114:8080/web_service_bank_pro/services/GetVirtualNumber?wsdl',
+			url: 'http://18.207.202.246:8080/web_service_bank_pro/services/GetVirtualNumber?wsdl',
 			method: 'POST',
 			body: xml,
 			headers: {
