@@ -33,7 +33,15 @@ Dependency yang digunakan untuk linting:
 ```npm install babel-eslint --save-dev```
 
 Cara menjalankan:<br>
-ketikan ```npm start``` pada direktori aplikasi Bank Pro
+| local                                                    |
+|:--------------------------------------------------------:|
+| ketikan ```npm start``` pada direktori aplikasi Bank Pro |
+<br>
+
+| AWS EC2                                                  |
+|:--------------------------------------------------------:|
+| ketikan ```localhost:3000``` pada web browser            |
+<br>
 
 ## Screenshots
 
@@ -108,6 +116,15 @@ ketikan ```npm start``` pada direktori aplikasi Bank Pro
 ![](screenshots/transactionsHistory2.png)
 <br>
 <br>
+
+## Pembagian Tugas
+
+### CI/CD
+| Number | Feature                | Assignment         |
+|:------:|:-----------------------|:-------------------|
+| 1.     | Linting                | 13517137           |
+| 2.     | Unit testing           | 13517026           |
+| 3.     | Deployment to AWS EC2  | 13517026, 13517137 |
 
 <p align="center">
     <b>
