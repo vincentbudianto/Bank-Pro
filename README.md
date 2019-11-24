@@ -26,6 +26,12 @@ Beberapa dependencies tambahan yang dibutuhkan oleh aplikasi Bank Pro:
 2. universal cookie <br>
 ```npm install --save universal-cookie```
 
+Dependency yang digunakan untuk linting:
+1. eslint<br>
+```npm install eslint -g```
+1. babel-eslint parser<br>
+```npm install babel-eslint --save-dev```
+
 Cara menjalankan:<br>
 ketikan ```npm start``` pada direktori aplikasi Bank Pro
 
