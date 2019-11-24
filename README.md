@@ -1,7 +1,7 @@
 <h1 align="center">
     <b>
         <br>
-        # Tugas Besar 2 IF3110 Pengembangan Aplikasi Berbasis Web
+        # Tugas Besar 2 IF3110 Pengembangan Aplikasi Berbasis Web / IF3159 Dasar Pembangunan Perangakat Lunak
         <br>
     </b>
 </h1>
@@ -36,11 +36,6 @@ Cara menjalankan:<br>
 | local                                                    |
 |:--------------------------------------------------------:|
 | ketikan ```npm start``` pada direktori aplikasi Bank Pro |
-<br>
-
-| AWS EC2                                                  |
-|:--------------------------------------------------------:|
-| ketikan ```localhost:3000``` pada web browser            |
 <br>
 
 ## Screenshots

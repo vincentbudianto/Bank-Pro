@@ -37,7 +37,7 @@ class Info extends Component {
 			</soapenv:Envelope>`;
 
 		let options = {
-			url: 'http://18.207.202.246:8080/web_service_bank_pro/services/GetCustomerBalance?wsdl',
+			url: 'http://3.83.91.13:8080/web_service_bank_pro/services/GetCustomerBalance?wsdl',
 			method: 'POST',
 			body: xml,
 			headers: {
