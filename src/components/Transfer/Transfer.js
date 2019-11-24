@@ -39,7 +39,7 @@ class Transfer extends Component {
 			</soapenv:Envelope>`;
 
 		let options = {
-			url: 'http://localhost:8080/web_service_bank_pro/services/GetCustomerBalance?wsdl',
+			url: 'http://18.215.174.114:8080/web_service_bank_pro/services/GetCustomerBalance?wsdl',
 			method: 'POST',
 			body: xml,
 			headers: {
@@ -108,7 +108,7 @@ class Transfer extends Component {
 				</soapenv:Envelope>`;
 
 			let options = {
-				url: 'http://localhost:8080/web_service_bank_pro/services/AddBalance?wsdl',
+				url: 'http://18.215.174.114:8080/web_service_bank_pro/services/AddBalance?wsdl',
 				method: 'POST',
 				body: xml,
 				headers: {
@@ -181,7 +181,7 @@ class Transfer extends Component {
 				</soapenv:Envelope>`;
 
 			let validationOptions = {
-				url: 'http://localhost:8080/web_service_bank_pro/services/GetAccountNumber?wsdl',
+				url: 'http://18.215.174.114:8080/web_service_bank_pro/services/GetAccountNumber?wsdl',
 				method: 'POST',
 				body: validationXML,
 				headers: {
@@ -220,7 +220,7 @@ class Transfer extends Component {
 								</soapenv:Envelope>`;
 
 							let options = {
-								url: 'http://localhost:8080/web_service_bank_pro/services/Transfer?wsdl',
+								url: 'http://18.215.174.114:8080/web_service_bank_pro/services/Transfer?wsdl',
 								method: 'POST',
 								body: xml,
 								headers: {

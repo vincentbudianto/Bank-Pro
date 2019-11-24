@@ -2,21 +2,21 @@ image: node:latest
 
 before_script:
   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-  - npm install
+  - npm ci
 
 stages:
   - test
-  # - deploy
+  - deploy
 
 lint:
   stage: test
   script:
     - npm run lint
 
-# deployToAWS:
-#   only:
-#     # - master
-#     - developer
-#   stage: deploy
-#   script:
-#     - bash deploy.sh
+deployToAWS:
+  only:
+    # - master
+    - developer
+  stage: deploy
+  script:
+    - bash deploy.sh

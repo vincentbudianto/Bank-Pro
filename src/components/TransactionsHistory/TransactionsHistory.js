@@ -28,7 +28,7 @@ class TransactionsHistory extends Component {
 			</soapenv:Envelope>`;
 
 		let options = {
-			url: 'http://localhost:8080/web_service_bank_pro/services/GetHistory?wsdl',
+			url: 'http://18.215.174.114:8080/web_service_bank_pro/services/GetHistory?wsdl',
 			method: 'POST',
 			body: xml,
 			headers: {
