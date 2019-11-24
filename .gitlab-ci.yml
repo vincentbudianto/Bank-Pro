@@ -1,17 +1,15 @@
+variables:
+  DOCKER_DRIVER: overlay2
+
 image: node:latest
 
 before_script:
   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+  - npm install
 
 stages:
-  - build
   - test
   - deploy
-
-lint:
-  stage: build
-  script:
-    - npm ci
 
 lint:
   stage: test
